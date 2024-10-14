@@ -1,18 +1,19 @@
-import React from 'react';
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';  
-import Contador from './Components/contador';
-
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './/Components/Home';
+import Game from './/Components/Game';
 import './App.css';
+
 function App() {
+  const [playerName, setPlayerName] = useState('');
+
   return (
-    <div className="App">
-      <Navbar />
-      <header className="App-header">
-        <Contador/>
-      </header>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home setPlayerName={setPlayerName} />} />
+        <Route path="/game" element={<Game playerName={playerName} />} />
+      </Routes>
+    </Router>
   );
 }
 
